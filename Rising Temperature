@@ -1,0 +1,4 @@
+---Rising Temperature
+
+select Id from (
+select id,recordDate,temperature, lag(temperature,1) over(order by recordDate asc)previous_day_temperature,lag(recordDate,1) over(order by recordDate asc) previous_day_date  from weather order by recordDate asc) a where temperature>previous_day_temperature and datediff(recordDate,previous_day_date)=1
