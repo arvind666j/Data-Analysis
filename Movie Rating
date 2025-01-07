@@ -1,0 +1,5 @@
+#Movie Rating
+select name as results from (select u.name from MovieRating mr join users u on u.user_id=mr.user_id  group by u.user_id order by count(mr.movie_id) desc,u.name asc limit 1)  a
+union ALL
+ select title as results from (select m.title,mr.movie_id,avg(mr.rating) over(partition by movie_id ) as average_rating from MovieRating mr join movies m on m.movie_id=mr.movie_id where Extract(year_month from created_at)=202002
+ order by 3 desc,1 asc limit 1 ) a
