@@ -1,0 +1,6 @@
+#Percentage of Users Attended a Contest
+
+# Write your MySQL query statement below
+
+select R.contest_id as contest_id,
+case when R.contest_id='null' then Round('0',2) else Round(count(U.user_id)*100/(select count(user_id) from Users ),2) END as percentage from Register R right join Users U on R.user_id=u.user_id group by R.contest_id having contest_id is not null order by percentage desc,contest_id asc 
