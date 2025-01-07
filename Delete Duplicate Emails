@@ -1,0 +1,8 @@
+#Delete Duplicate Emails
+DELETE from person where ID IN (
+    
+select id from 
+
+(select Id,email,row_number() over(partition by email order by id asc) as rn from person) a 
+
+where rn>=2)
