@@ -1,0 +1,4 @@
+# Consecutive Numbers
+select distinct num as ConsecutiveNums  from (
+select num,lead(num,1) over(order by id asc) as a,lead(num,2) over(order by id asc) as b from logs
+) A where num=a AND num=b
