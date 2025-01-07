@@ -1,0 +1,3 @@
+#The Number of Employees Which Report to Each Employee
+  
+select distinct e.reports_to,a.name,count(e.employee_id) as count_emp,round(avg(e.age),0) as average_age from employees e join employees a on e.reports_to=a.employee_id where e.reports_to is NOT null group by e.reports_to order by e.reports_to 
