@@ -1,0 +1,2 @@
+---Not Boring Movies
+select id,movie,description,rating from cinema where id  IN (select case when id%2!=0 then Id END as id from cinema) and  description!='boring' order by rating desc
