@@ -1,0 +1,2 @@
+#Triangle Judgement
+select x,y,z,case when x+y>z and y+z>x and z+x>y THEN 'Yes' Else 'No' END as 'triangle' from Triangle
