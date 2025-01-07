@@ -1,0 +1,3 @@
+---Recyclable and low fat products
+
+select id from Products where low_fats='Y' and recyclable='Y'
