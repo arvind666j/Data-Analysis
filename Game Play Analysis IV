@@ -1,0 +1,14 @@
+#Game Play Analysis IV
+
+
+# To calculate the fraction of player that logged in consecutively after their first login.
+# identifying the event_date and next date difference will be predominantly potentially efficient 
+# substracting the event_date from min_date(first_login) ; substracting all dates in the each player_id  window upon provides the count of player_id which has the consecutive days after first login
+
+select Round(count( distinct player_id)/(select count(distinct player_id) from activity),2) as fraction from
+(select player_id,event_date,
+        min(event_date) over(partition by player_id order by event_date) as min_date 
+        from activity 
+        )a
+where datediff(event_date,min_date)=1
+
