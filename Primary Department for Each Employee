@@ -1,0 +1,4 @@
+#Primary Department for Each Employee
+
+select employee_id,department_id from employee where primary_flag='Y' OR (employee_id , primary_flag) IN(
+select Employee_id,primary_flag from employee group by employee_id having  count(department_id)=1 and primary_flag='N')
