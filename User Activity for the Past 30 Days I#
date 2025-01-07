@@ -1,0 +1,6 @@
+#User Activity for the Past 30 Days I
+SELECT activity_date AS day, count(distinct user_id) AS active_users,datediff('2019-07-27', activity_date) as datediff_,date_sub("27-07-2019", Interval 30 day) as date_sub30
+FROM Activity
+WHERE datediff('2019-07-27', activity_date) >= 0
+  AND datediff('2019-07-27', activity_date) < 30
+GROUP BY activity_date;
