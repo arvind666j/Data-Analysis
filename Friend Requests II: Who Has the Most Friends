@@ -1,0 +1,10 @@
+#Friend Requests II: Who Has the Most Friends
+# Write your MySQL query statement below
+
+with A as
+(
+select accepter_id as id from RequestAccepted
+union All
+select requester_id as id from RequestAccepted   
+) 
+select id , count(*) as num from A group by id  order by 2 desc limit 1
